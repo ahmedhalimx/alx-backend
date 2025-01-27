@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Flask application
+A Basic flask application
 """
 from flask import Flask
 from flask import request
@@ -10,15 +10,18 @@ from flask_babel import Babel
 
 class Config(object):
     """
-    Configuration Class Definiton
+    Application configuration class
     """
     LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
+# Instantiate the application object
 app = Flask(__name__)
 app.config.from_object(Config)
+
+# Wrap the application with Babel
 babel = Babel(app)
 
 
@@ -36,7 +39,7 @@ def get_locale() -> str:
 @app.route('/', strict_slashes=False)
 def index() -> str:
     """
-    Renders a html template
+    Renders a basic html template
     """
     return render_template('4-index.html')
 
